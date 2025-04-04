@@ -49,8 +49,9 @@ from scipy.fft import fftn, ifftn
 from mpl_toolkits.mplot3d import Axes3D
 
 # Step 1: Create or load 3D data cube
-cube = np.random.rand(640, 640, 640)
-rand=np.random.rand(640, 640, 640)
+size=200
+cube = np.random.rand(size, size, size)
+rand=np.random.rand(size, size, size)
 rand_2pi=rand*2*np.pi
 cube=cube*rand_2pi
 # Step 2: FFT
@@ -80,8 +81,22 @@ ax.set_title("3D iFFT from Phase Only")
 ax.set_xlabel('X')
 ax.set_ylabel('Y')
 ax.set_zlabel('Z')
-plt.colorbar(sc, label="Reconstructed Intensity (|iFFT|²)")
+plt.colorbar(sc, label="Reconstructed Magnitude (|iFFT|)")#|iFFT|²
 plt.tight_layout()
 plt.show()
+
+# coords2 = np.array(np.where(cube > threshold)).T
+# values2 = cube[cube > threshold]
+# fig = plt.figure(figsize=(8, 6))
+# ax = fig.add_subplot(111, projection='3d')
+# sc = ax.scatter(coords2[:, 0], coords2[:, 1], coords2[:, 2], c=values2, cmap='inferno', s=2)
+
+# ax.set_title("3D iFFT from Phase Only")
+# ax.set_xlabel('X')
+# ax.set_ylabel('Y')
+# ax.set_zlabel('Z')
+# plt.colorbar(sc, label="Original)")#|iFFT|²
+# plt.tight_layout()
+# plt.show()
 
 
