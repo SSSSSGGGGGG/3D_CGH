@@ -90,15 +90,15 @@ reconstructed = ifftn(abs(fft_cube)*phase_only_cube)
 intensity = np.abs(reconstructed)#**2
 h,w,t=intensity.shape
 x3, y3, z3 = np.indices((h,w,t))
-re_mask=intensity>0.0005*max_
+re_mask=intensity>0.000000005*max_
 fig3=plt.figure()
 ax3 = fig3.add_subplot(111, projection="3d")
 sc3 = ax3.scatter(x3[re_mask], y3[re_mask], z3[re_mask], c=intensity[re_mask], cmap="hot", s=5)
 ax2.set_title("FFT Cube")
 plt.colorbar(sc3, ax=ax3)
-ax2.set_xlim(0, size)
-ax2.set_ylim(0, size)
-ax2.set_zlim(0, size)
+ax2.set_xlim(0, h)
+ax2.set_ylim(0, w)
+ax2.set_zlim(0, t)
 plt.show()
 # # Step 6: Threshold for visualization
 # threshold = 0.7 * intensity.max()
